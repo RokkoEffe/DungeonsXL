@@ -1,0 +1,24 @@
+Bitte beachte, dass dies ein <b>BEISPIEL-FILE</b> ist. Es lässt sich nicht ohne editiert zu werden kopieren und benutzen.
+
+<pre><code>#Hauptkonfiguration von DungeonsXL (config.yml im DungeonsXL Ordner)
+
+#Sprachdatei welche man unter DungeonsXL/languages findet
+language: de
+
+#Work in Progress
+enableEconomy: false
+
+#Optionen zum Tutorial
+tutorial:
+    #Ob diese Funktion verwendet werden soll
+    activated: true
+    #Der Name des Dungeons welcher als Tutorial dienen soll
+    dungeon: tutorial
+    #Die Permissions-Gruppe welche beim Login automatisch das Tutorial betreten soll
+    startgroup: default
+    #Die Permissions-Gruppe welche die Spieler beim Abschluss des Tutorials erhalten
+    endgroup: player
+    
+#Standart Konfiguration für Dungeons
+#Falls kein Wert, in der Dungeon eigenen config.yml, angegeben wird so wird automatisch der Wert dieser Konfiguration verwendet.
+default:</code></pre>

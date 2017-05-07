@@ -1,0 +1,174 @@
+Bitte beachte, dass dies ein <b>BEISPIEL-FILE</b> ist. Es lässt sich nicht ohne editiert zu werden kopieren und benutzen.
+
+<pre><code>#Dungeonkonfiguration von DungeonsXL (config.yml im DungeonsXL/dungeon/%DungeonName% Ordner)
+
+#Ob die Lobby deaktiviert ist. Dies ist nur für Instanzen welche man alleine absolviert und bei der man keine Klasse auswählen kann.
+isLobbyDisabled: false
+
+#Zeit bis Spieler aus dem Dungeon gekickt werden, wenn sie offline sind (in Sekunden)
+#-1 = nie / 0 = sofort
+timeUntilKickOfflinePlayer: 10000
+
+#Zeit bis man den Dungeon nochmals betreten darf (in Stunden) 
+timeToNextPlay: 72
+
+#Work in Progress
+timeToNextLoot: 12
+
+#STELLE SICHER, DASS DU DIESEN ABSCHNITT BEARBEITET HAST!
+#Eines dieser Dungeons muss geschafft sein ("any" wenn egal welches)
+mustFinishOne:
+  - any
+
+#Alle dieser Dungeons müssen geschafft sein
+mustFinishAll:
+  - jumpinjackflash
+  - highwaytohell
+  - wontgetfooledagain
+
+#Zeit in Stunden seit dem letzten Abschluss eines der oben genannten Dungeons
+timeLastPlayed: 336
+
+#Sollen Spieler ihre eigenen Items benutzen, oder benutzt Du lieber Klassen?
+keepInventoryOnEnter: false
+#Sollen Spieler ihre Items verlieren, wenn sie sterben (nicht mit "onEscape" verwechseln!)?
+keepInventoryOnDeath: false
+#Sollen Spieler ihr Inventar behalten, wenn sie den Dungeon abschließen?
+keepInventoryOnFinish: false
+#Sollen Spieler ihr Inventar behalten, wenn sie den Dungeon erfolglos beenden?
+keepInventoryOnEscape: false
+
+#Anzahl der Leben, die ein Spieler zuerst hat, wenn er einen Dungeon betritt
+initialLives: 3
+
+#Klassen welche man am Anfang auswählen kann
+classes:
+  #Name der Klassen
+  Krieger:
+    #Welche Items die Klasse von Anfang an kriegt
+    items:
+    #Item-Id/Data, Anzahl, Verzauberungs Name/Lvl
+    - 268,1,FIRE_ASPECT/1
+    - 276,1
+    - 302,1
+    - 303,1
+    - 304,1
+    - 305,1
+    - 364,1
+    #Ob die Klasse einen zahmen Hund erhält, welcher beim Tod respawnt
+    dog: false
+    #Url zu einem Link für einen Charakter-Skin (Achtung: enableSpout muss aktiv sein!)
+    spoutSkinURL:
+  Tank:
+    items:
+    - 279,1
+    - 310,1
+    - 307,1
+    - 308,1
+    - 309,1
+    - 364,3
+  Jaeger:
+    items:
+    - 261,1
+    - 262,128
+    - 268,1
+    - 298,1
+    - 299,1
+    - 300,1
+    - 301,1
+    - 364,3
+    - 363,10
+    dog: true
+  Bogenschuetze:
+    items:
+    - 261,1
+    - 262,128
+    - 272,1
+    - 302,1
+    - 299,1
+    - 300,1
+    - 301,1
+    - 364,3
+  Magier:
+    items:
+    - 298,1
+    - 315,1
+    - 373/16385,3
+    - 373/16389,3
+    - 373/8229,2
+    - 373/16449,2
+    - 373/16394,2
+    - 364,8
+    - 268,1,FIRE_ASPECT/1
+
+#Mögliche Namen für Verzauberungen:
+#ARROW_DAMAGE, ARROW_FIRE, ARROW_INFINITE, ARROW_KNOCKBACK,
+#DAMAGE_ALL, DAMAGE_ARTHROPODS, DAMAGE_UNDEAD, DIG_SPEED, DURABILITY, FIRE_ASPECT, KNOCKBACK,
+#LOOT_BONUS_BLOCKS, LOOT_BONUS_MOBS, OXYGEN, PROTECTION_ENVIRONMENTAL, PROTECTION_EXPLOSIONS,
+#PROTECTION_FALL, PROTECTION_FIRE, PROTECTION_PROJECTILE, SILK_TOUCH, THORNS, WATER_WORKER
+#Beschreibung: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
+
+#Nachrichten, welche man auch mit /dxl msg erstellen kann
+message:
+  '1': Willkommen in diesem Dungeon!
+  '2': Noch eine Nachricht
+
+#Objekte welche man nicht droppen kann (nicht zerstören darf)
+secureObjects:
+- 69
+
+#Spieler die die Instanz bearbeiten dürfen (/dxl invite)
+invitedPlayers:
+- Sataniel
+
+#MobTypes die man im Dungeon verwenden kann
+mobTypes:
+  #Name des Types welcher auf das Mob-Schild kommt
+  custom_zombie:
+    #Der Typ des Mobs
+    Type: Zombie
+    #Lebenspunkte
+    MaxHealth: 100
+    #Kopf-Item
+    ItemHelmet: 310
+    #Brust-Item
+    ItemChestplate: 310
+    #Hosen-Item
+    ItemLeggings: 310
+    #Fuss-Item
+    ItemBoots: 310
+    #Hand-Item
+    ItemHand: 310
+    #Ob der Mob ein Witherskelett ist (geht nur bei Type:Skeleton)
+    isWitherSkeleton: true
+    #Welcher Ozelottyp ein Ozelot hat (geht nur bei Type:Ocelot) // BLACK_CAT, RED_CAT, SIAMESE_CAT, WILD_OCELOT
+    ocelotType: BLACK_CAT
+    #Items, die der Mob beim sterben dropt
+    drops:
+      1:
+        #Item-Id
+        id: 35
+        #Item-Data (z. Bsp. für farbige Wolle)
+        data: 9 
+        #Anzahl (standart 1)
+        amount: 2
+        #Verzauberungen
+        enchantments:
+          #Verzauberung + Level
+          - DAMAGE_ALL 2
+          - DURABILITY 10
+        #Item-Name
+        name: 'Die Wolle'
+        #Item-Beschreibung (Mehrere Zeilen mit '//' trennen)
+        lore: 'Feinste Wolle!//Sehr fein!'
+        #Drop Chance (0-100) (Standart 100)
+        chance: 50
+      2:
+        id: 276
+        enchantments:
+          - DAMAGE_ALL 5
+          - DURABILITY 10
+        name: 'Zerstörer'
+        lore: '10 Dmg'
+    
+</code></pre>

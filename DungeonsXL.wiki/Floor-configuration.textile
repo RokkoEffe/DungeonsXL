@@ -1,0 +1,144 @@
+Note that this is an **EXAMPLE FILE**. You can't just grab it and assume that it works as is.
+
+Some tips:
+* For clearness, better create a new file and add just the values you need.
+* In case you're confused because you do not find a config.yml file in your map folder: This is intended because a map does not necessarily need a config file. The values can also be fetched from the "dungeon configuration":dungeon-configuration, which is more convenient if a dungeon has multiple floors with the same rules, or from the "main configuration":main-configuration, which might be more convenient if the game is very simple or for testing / building purposes.
+* (Ignore this if you do not work with multi floor dungeons) The value priority of floor configuration game rules is relatively high. default values from the dungeon script will be overriden, but override values from the dungeon script will override the floor configuration values.
+
+```
+# Floor configuration of DungeonsXL (config.yml in DungeonsXL/map/%mapName% folder)
+
+# You can force a game type sothat the game type defined by a ready sign gets overriden.
+forcedGameType: DEFAULT
+
+# If the Lobby is disabled. This applies only to Dungeons that have to be solved alone and where there are no classes to choose from.
+isLobbyDisabled: false
+
+# Time until a player is kicked from a dungeon after going offline (in seconds)
+# -1 = never / 0 = immediately
+timeUntilKickOfflinePlayer: 10000
+
+# Time until you can play a Dungeon again (in hours)
+timeToNextPlay: 6
+
+# Time until a player can get loot for another time
+timeToNextLoot: 12
+
+# Time until a new mob waves begins when enough mobs are killed.
+timeToNextWave: 10
+
+# Dungeons can be played with a timer.
+# If the group has no time left, the players get kicked.
+timeToFinish: 240
+
+#The game mode, SURVIVAL if nothing
+gameMode: ADVENTURE
+
+# PvP
+playerVersusPlayer: true
+# Friendly fire refers just to members of the same group
+friendlyFire: false
+
+# These commands can be used by all players if they are in the dungeon.
+# DXL commands like /dxl leave are included by default.
+gameCommandWhitelist:
+  - version
+  - f list
+  - f show
+  - ch global
+
+# MAKE SURE YOU EDIT THIS PART!
+# One of these Dungeons must be finished ("any" for any dungeon). If you do not want any, leave this empty.
+mustFinishOne:
+  - any
+
+# All of these Dungeons must be finished. If you do not want any, leave this empty.
+mustFinishAll:
+  - jumpinjackflash
+  - highwaytohell
+  - wontgetfooledagain
+
+# Max time in hours after the last finish of one of the Dungeons above
+timeLastPlayed: 336
+
+# A list of requirements
+requirements:
+  feeMoney: 7.5
+  feeLevel: 2
+
+# Shall players play the dungeon with their own items or do you want to use classes?
+keepInventoryOnEnter: false
+# Shall players lose their items when they die (do not mix up this with "onEscape"!)?
+keepInventoryOnDeath: false
+# Shall players keep their inventory when they finish the dungeon?
+keepInventoryOnFinish: false
+# Shall players keep their inventory when they leave the dungeon without succeeding?
+keepInventoryOnEscape: false
+
+# If players can build and destroy blocks in this world.
+breakBlocks: true
+# CURRENTLY UNUSED
+# A whitelist of breakable blocks.
+# breakBlocks is supposed to be set to "true" if this should be used.
+breakWhiteList:
+  # A material value and a list of all tools that can destroy this block
+  SPONGE: ["IRON_PICKAXE", "STICK"]
+  # Dirt blocks can be destroyed with any tool
+  DIRT: []
+placeBlocks: true
+# A whitelist of placeable blocks.
+# placeBlocks is supposed to be set to "true" if this should be used.
+placeWhitelist:
+  - SPONGE
+
+# Amount of lives a player initially has when he enters a dungeon
+initialLives: 3
+# Alternatively, you can use group lives.
+initialGroupLives: 5
+
+# Messages also to be created with /dxl msg
+message:
+  '1': Welcome to this dungeon!
+  '2': Another message
+
+# Items you cannot drop or destroy
+secureObjects:
+- 69
+
+# Players who can to edit the Dungeon (/dxl invite)
+# You can add both UUIDs and names.
+invitedPlayers:
+- sataniel
+
+# A list of permissions players get while they play the game.
+# The permissions get removed as soon as the player leaves the game.
+# Requires Vault and a permissions plugin like PermissionsEx.
+gamePermissions:
+  - dxl.reload
+  - another.node
+
+requirements:
+  # If the group has too many or not enough members, the players will not be allowed to use the ready sign.
+  groupSize:
+    minimum: 1
+    maximum: 2
+  # Players must have these permission nodes to enter the dungeon:
+  permission:
+    - my.custom.node
+    - yet.another.node
+
+# Use this to replace the default ready / new floor message.
+# This is fully compatible with the override system.
+# If titles are deactivated in the main config, this is not going to work.
+title:
+  title: "&4Title"
+  subtitle: "&6Subtitle"
+  actionBar: "&aA C T I O N B A R"
+  chat: "&bCentered chat message"
+  # How long shall the title be visible (seconds)?
+  # The title works without these three options.
+  fadeIn: 1.0
+  show: 3.0
+  fadeOut: 1.0
+
+```
